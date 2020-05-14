@@ -1,0 +1,30 @@
+{
+  "name": "service-a",
+  "version": "1.0.0",
+  "description": "api-gateway",
+  "main": "dist",
+  "scripts": {
+		"build": "rm -rf ./dist && npm run build:ts && npm run lint",
+		"build:ts": "tsc --rootDir ./src/",
+		"lint": "eslint --fix ./src/**/*.*"
+  },
+  "dependencies": {
+    "@hapi/hapi": "~19.1.1",
+    "@hapi/joi": "17.1.1",
+		"hapi-hemera": "~6.0.0"
+	},
+	"devDependencies": {
+    "@types/hapi__hapi": "~19.0.3",
+    "@types/hapi__joi": "17.1.0",
+		"@types/node": "~14.0.1",
+		"ts-helpers": "~1.1.2",
+		"ts-node": "~8.10.1",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-typescript": "^7.2.1",
+    "eslint-plugin-import": "^2.20.2",
+		"typescript": "~3.9.2"
+	},
+  "author": "",
+  "license": "ISC"
+}

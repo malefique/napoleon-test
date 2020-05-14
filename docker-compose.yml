@@ -1,0 +1,32 @@
+version: "3"
+services:
+    service-a:
+        build: 
+            context: "./service-a"
+        depends_on:
+            - service-b
+            - nats
+        ports:
+            - "6565:6565"
+        environment:
+            - PORT=6565
+            - NATS_URL=nats://nats:4222
+            - NATS_USER=ruser
+            - NATS_PW=T0pS3cr3t
+    service-b:
+        build: 
+            context: "./service-b"
+        depends_on:
+            - nats
+        environment: 
+            - API_TOKEN=e696190994fc5a80f312df5189f857fddedc9a1e
+            - NATS_URL=nats://nats:4222
+            - NATS_USER=ruser
+            - NATS_PW=T0pS3cr3t
+    nats:
+        build:
+            context: './nats'
+        ports:
+            - 4222:4222
+            - 8222:8222
+        restart: always
